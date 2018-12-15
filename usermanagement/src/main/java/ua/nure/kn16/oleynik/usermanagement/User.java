@@ -15,15 +15,21 @@ public class User implements Serializable {
         super();
     }
 
-    public User(Long id, String firstName, String lastName, Date birthDate) {
+    public User(Long id, String firstName, String lastName, Date date) {
         super();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.birthDate = date;
     }
 
-    public Date getBirthDate() {
+    public User(String firstName, String lastName, Date date) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = date;
+	}
+
+	public Date getBirthDate() {
         return birthDate;
     }
 
@@ -55,22 +61,22 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(birthDate, user.birthDate);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        User user = (User) o;
+//        return Objects.equals(id, user.id) &&
+//                Objects.equals(firstName, user.firstName) &&
+//                Objects.equals(lastName, user.lastName) &&
+//                Objects.equals(birthDate, user.birthDate);
+//    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, firstName, lastName, birthDate);
-    }
+//    @Override
+//    public int hashCode() {
+//
+//        return Objects.hash(id, firstName, lastName, birthDate);
+//    }
 
     public String getFullName() {
         return (new StringBuilder(getFirstName()).append(", ").append(getLastName())).toString();
@@ -94,4 +100,30 @@ public class User implements Serializable {
 
         return age;
     }
+
+	@Override
+	public int hashCode() {
+		if(this.getId() == null) {
+			return 0;
+		}
+		return this.getId().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(this == obj) {
+			return true;
+		}
+		if(this.getId() == null && ((User) obj).getId() == null) {
+			return true;
+		}
+		
+		return this.getId().equals(((User) obj).getId());
+	}
+    
+    
+    
 }
