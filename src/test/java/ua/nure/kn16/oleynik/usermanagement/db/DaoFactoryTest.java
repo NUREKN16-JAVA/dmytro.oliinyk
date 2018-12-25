@@ -1,6 +1,8 @@
 package ua.nure.kn16.oleynik.usermanagement.db;
 
 import junit.framework.TestCase;
+import ua.nure.kn16.oleynik.usermanagement.db.DaoFactory;
+import ua.nure.kn16.oleynik.usermanagement.db.UserDao;
 
 public class DaoFactoryTest extends TestCase {
 

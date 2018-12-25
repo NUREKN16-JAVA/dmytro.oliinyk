@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import ua.nure.kn16.oleynik.usermanagement.User;
 
+
 public interface UserDao {
 	User create(User user) throws DatabaseException;
 	

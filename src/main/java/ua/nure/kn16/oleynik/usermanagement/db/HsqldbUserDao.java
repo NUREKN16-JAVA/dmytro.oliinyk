@@ -12,6 +12,7 @@ import java.util.LinkedList;
 
 import ua.nure.kn16.oleynik.usermanagement.User;
 
+
 class HsqldbUserDao implements UserDao {
 	private static final String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users";
 	private static final String INSERT_QUERY = "INSERT INTO users (firstname, lastname, dateofbirth) VALUES(?, ?, ?)";
@@ -48,7 +49,7 @@ class HsqldbUserDao implements UserDao {
 			PreparedStatement statement = connection.prepareStatement(INSERT_QUERY);
 			statement.setString(1, user.getFirstName());
 			statement.setString(2, user.getLastName());
-			statement.setDate(3, new Date(user.getBirthDate().getTime()));
+			statement.setDate(3, new Date(user.getBirthday().getTime()));
 			int n = statement.executeUpdate();
 			if(n != 1) {
 				throw new DatabaseException("Number of the inserted rows: " + n);
@@ -79,7 +80,7 @@ class HsqldbUserDao implements UserDao {
                     .prepareStatement(UPDATE_QUERY);
             statement.setString(1,user.getFirstName());
             statement.setString(2,user.getLastName());
-            statement.setDate(3,new Date(user.getBirthDate().getTime()));
+            statement.setDate(3,new Date(user.getBirthday().getTime()));
             statement.setLong(4, user.getId());
             int number = statement.executeUpdate();
             if(number != 1){
@@ -129,7 +130,7 @@ class HsqldbUserDao implements UserDao {
                 user.setId(new Long(oneUserResultSet.getLong("ID")));
                 user.setFirstName(oneUserResultSet.getString("FIRSTNAME"));
                 user.setLastName(oneUserResultSet.getString("LASTNAME"));
-                user.setBirthDate(oneUserResultSet.getDate("DATEOFBIRTH"));
+                user.setBirthday(oneUserResultSet.getDate("DATEOFBIRTH"));
             }
             connection.close();
             preparedStatement.close();
@@ -153,7 +154,7 @@ class HsqldbUserDao implements UserDao {
 				user.setId(new Long(resultSet.getLong(1)));
 				user.setFirstName(resultSet.getString(2));
 				user.setLastName(resultSet.getString(3));
-				user.setBirthDate(resultSet.getDate(4));
+				user.setBirthday(resultSet.getDate(4));
 				result.add(user);
 			}
 		} catch (SQLException e) {

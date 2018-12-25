@@ -18,12 +18,13 @@ import junit.extensions.jfcunit.JFCTestHelper;
 import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.eventdata.StringEventData;
 import junit.extensions.jfcunit.finder.NamedComponentFinder;
-import ua.nure.kn16.oleynik.usermanagement.User;
 import ua.nure.kn16.oleynik.usermanagement.db.DaoFactory;
 import ua.nure.kn16.oleynik.usermanagement.db.DaoFactoryImpl;
 import ua.nure.kn16.oleynik.usermanagement.db.MockDaoFactory;
 import ua.nure.kn16.oleynik.usermanagement.db.MockUserDao;
+import ua.nure.kn16.oleynik.usermanagement.gui.MainFrame;
 import ua.nure.kn16.oleynik.usermanagement.util.Messages;
+import ua.nure.kn16.potapov.usermanagement.User;
 
 public class MainFrameTest extends JFCTestCase {
 

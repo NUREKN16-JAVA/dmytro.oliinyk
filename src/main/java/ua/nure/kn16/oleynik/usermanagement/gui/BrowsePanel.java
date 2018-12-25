@@ -33,7 +33,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	}
 
 	private void initialize() {
-		this.setName("browsePanel"); //$NON-NLS-1$
+		this.setName("browsePanel"); 
 		this.setLayout(new BorderLayout());
 		this.add(getTablePanel(), BorderLayout.CENTER);
 		this.add(getButtonsPanel(), BorderLayout.SOUTH);
@@ -54,9 +54,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getDetailsButton() {
 		if(detailsButton == null) {
 			detailsButton = new JButton();
-			detailsButton.setText(Messages.getString("BrowsePanel.details")); //$NON-NLS-1$
-			detailsButton.setName("detailsButton"); //$NON-NLS-1$
-			detailsButton.setActionCommand("details"); //$NON-NLS-1$
+			detailsButton.setText(Messages.getString("BrowsePanel.details"));
+			detailsButton.setName("detailsButton"); 
+			detailsButton.setActionCommand("details"); 
 			detailsButton.addActionListener(this);
 		}
 		return detailsButton;
@@ -65,9 +65,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getDeleteButton() {
 		if(deleteButton == null) {
 			deleteButton = new JButton();
-			deleteButton.setText(Messages.getString("BrowsePanel.delete")); //$NON-NLS-1$
-			deleteButton.setName("deleteButton"); //$NON-NLS-1$
-			deleteButton.setActionCommand("delete"); //$NON-NLS-1$
+			deleteButton.setText(Messages.getString("BrowsePanel.delete")); 
+			deleteButton.setName("deleteButton"); 
+			deleteButton.setActionCommand("delete"); 
 			deleteButton.addActionListener(this);
 		}
 		return deleteButton;
@@ -76,9 +76,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getEditButton() {
 		if(editButton == null) {
 			editButton = new JButton();			
-			editButton.setText(Messages.getString("BrowsePanel.edit")); //$NON-NLS-1$
-			editButton.setName("editButton"); //$NON-NLS-1$
-			editButton.setActionCommand("edit"); //$NON-NLS-1$
+			editButton.setText(Messages.getString("BrowsePanel.edit"));
+			editButton.setName("editButton"); 
+			editButton.setActionCommand("edit"); 
 			editButton.addActionListener(this);
 		}
 		return editButton;
@@ -87,9 +87,9 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getAddButton() {
 		if(addButton == null) {
 			addButton = new JButton();			
-			addButton.setText(Messages.getString("BrowsePanel.add")); //$NON-NLS-1$
-			addButton.setName("addButton"); //$NON-NLS-1$
-			addButton.setActionCommand("add"); //$NON-NLS-1$
+			addButton.setText(Messages.getString("BrowsePanel.add"));
+			addButton.setName("addButton"); 
+			addButton.setActionCommand("add"); 
 			addButton.addActionListener(this);
 		}
 		return addButton;
@@ -105,7 +105,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JTable getUserTable() {
 		if(userTable == null) {
 			userTable = new JTable();
-			userTable.setName("userTable"); //$NON-NLS-1$
+			userTable.setName("userTable"); 
 		}
 		
 		return userTable;
@@ -127,41 +127,41 @@ getUserTable().setModel(model);
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		if ("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+		if ("add".equalsIgnoreCase(actionCommand)) { 
 			this.setVisible(false);
 			((MainFrame) parent).showAddPanel();
-		} else if ("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+		} else if ("edit".equalsIgnoreCase(actionCommand)) { 
 			int selectedRow = userTable.getSelectedRow();
 			if (selectedRow == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_edit"), "Edit", JOptionPane.INFORMATION_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_edit"), "Edit", JOptionPane.INFORMATION_MESSAGE); 
 				return;
 			}
 			User user = ((UserTableModel) userTable.getModel()).getUser(selectedRow);
 			this.setVisible(false);
 			((MainFrame) parent).showEditPanel(user);
-		} else if ("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+		} else if ("delete".equalsIgnoreCase(actionCommand)) {
 			int selectedRow = userTable.getSelectedRow();
 			if (selectedRow == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_delete"), "Delete", JOptionPane.INFORMATION_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_delete"), "Delete", JOptionPane.INFORMATION_MESSAGE); 
 				return;
 			}
-			int answ = JOptionPane.showConfirmDialog(null, Messages.getString("BrowsePanel.confirm_delete"), //$NON-NLS-1$
-					"Delete", JOptionPane.YES_NO_OPTION); //$NON-NLS-1$
+			int answ = JOptionPane.showConfirmDialog(null, Messages.getString("BrowsePanel.confirm_delete"),
+					"Delete", JOptionPane.YES_NO_OPTION);
 
 			if (answ == JOptionPane.YES_OPTION) {
 				try {
 					((MainFrame) parent).getDao().delete(((UserTableModel) userTable.getModel()).getUser(selectedRow));
 				} catch (DatabaseException e1) {
-					JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$
+					JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
 				}
 			}
 
 			initTable();
 			return;
-		} else if ("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+		} else if ("details".equalsIgnoreCase(actionCommand)) { 
 			int selectedRow = userTable.getSelectedRow();
 			if (selectedRow == -1) {
-				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_show_info"), "Details", //$NON-NLS-1$ //$NON-NLS-2$
+				JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.сhoose_user_show_info"), "Details",
 						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}

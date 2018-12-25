@@ -11,6 +11,10 @@ import org.dbunit.dataset.xml.XmlDataSet;
 import org.junit.Test;
 
 import ua.nure.kn16.oleynik.usermanagement.User;
+import ua.nure.kn16.oleynik.usermanagement.db.ConnectionFactory;
+import ua.nure.kn16.oleynik.usermanagement.db.ConnectionFactoryImpl;
+import ua.nure.kn16.oleynik.usermanagement.db.DatabaseException;
+import ua.nure.kn16.oleynik.usermanagement.db.HsqldbUserDao;
 
 public class HsqldbUserDaoTest extends DatabaseTestCase {
 	private HsqldbUserDao dao;
@@ -20,7 +24,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		connectionFactory = new ConnectionFactoryImpl("org.hsqldb.jdbcDriver", "jdbc:hsqldb:file:db/usermanagement", "sa", "");
+		connectionFactory = new ConnectionFactoryImpl("org.hsqldb.jdbcDriver", "jdbc:hsqldb:file:db/labs", "sa", "");
 		dao = new HsqldbUserDao(connectionFactory);
 	}
 	
@@ -30,7 +34,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 			User user = new User();
 			user.setFirstName("Ivan");
 			user.setLastName("Ivanov");
-			user.setBirthDate(new Date());
+			user.setBirthday(new Date());
 			assertNull(user.getId());
 			user = dao.create(user);
 			assertNotNull(user);
@@ -96,7 +100,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 
 	@Override
 	protected IDatabaseConnection getConnection() throws Exception {
-		connectionFactory = new ConnectionFactoryImpl("org.hsqldb.jdbcDriver", "jdbc:hsqldb:file:db/usermanagement", "sa", "");
+		connectionFactory = new ConnectionFactoryImpl("org.hsqldb.jdbcDriver", "jdbc:hsqldb:file:db/labs", "sa", "");
 		return new DatabaseConnection(connectionFactory.createConnection());
 	}
 

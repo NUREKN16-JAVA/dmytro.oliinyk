@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import ua.nure.kn16.oleynik.usermanagement.User;
 
 
+
 public class DetailsPanel extends AddPanel {
 	
 	private User user;
@@ -17,11 +18,11 @@ public class DetailsPanel extends AddPanel {
 
     public DetailsPanel(MainFrame mainFrame) {
         super(mainFrame);
-        setName("detailsPanel"); //$NON-NLS-1$
+        setName("detailsPanel"); 
     }
 
     protected void doAction(ActionEvent e) throws ParseException {
-        if ("ok".equalsIgnoreCase(e.getActionCommand())) { //$NON-NLS-1$
+        if ("ok".equalsIgnoreCase(e.getActionCommand())) { 
             user.setFirstName(getFirstNameField().getText());
             user.setLastName(getLastNameField().getText());
             DateFormat format = DateFormat.getDateInstance();
@@ -35,7 +36,7 @@ public class DetailsPanel extends AddPanel {
         getFirstNameField().setEditable(false);
         getLastNameField().setText(user.getLastName());
         getLastNameField().setEditable(false);
-        getDateOfBirthField().setText(format.format(user.getBirthDate()));
+        getDateOfBirthField().setText(format.format(user.getBirthday()));
         getDateOfBirthField().setEditable(false);
     }
 
@@ -51,9 +52,9 @@ public class DetailsPanel extends AddPanel {
         if (backButton == null) {
             backButton = new JButton();
             backButton.setText("Назад");
-            //backButton.setText(Messages.getString(Messages.getString("DetailsPanel.back"))); //$NON-NLS-1$
-            backButton.setName("backButton"); //$NON-NLS-1$
-            backButton.setActionCommand("back"); //$NON-NLS-1$
+            //backButton.setText(Messages.getString(Messages.getString("DetailsPanel.back"))); 
+            backButton.setName("backButton"); 
+            backButton.setActionCommand("back"); 
             backButton.addActionListener(this);
         }
         return backButton;

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ua.nure.kn16.oleynik.usermanagement.User;
+import ua.nure.kn16.oleynik.usermanagement.db.ConnectionFactory;
+import ua.nure.kn16.oleynik.usermanagement.db.DatabaseException;
+import ua.nure.kn16.oleynik.usermanagement.db.UserDao;
 
 public class MockUserDao implements UserDao {
 	private long id = 0;

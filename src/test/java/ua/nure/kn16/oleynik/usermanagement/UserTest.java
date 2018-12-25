@@ -1,65 +1,104 @@
 package ua.nure.kn16.oleynik.usermanagement;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+
+import org.junit.Test;
+
+import ua.nure.kn16.oleynik.usermanagement.User;
 
 public class UserTest {
-    public static final long ID = 1L;
-    public static final String FIRST_NAME = "Ivan";
-    public static final String LAST_NAME = "Ivanov";
-
-    private static final int YEAR_OF_BIRTH = 1990;
-
-    private static int today;
-
-    private User user;
-
+	private User user;
+    private Calendar calendar;
+    private Date birthday;
+    
     @Before
-    public void setUp() throws Exception {
-        user = new User(ID, FIRST_NAME, LAST_NAME, new Date());
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        today = calendar.get(Calendar.DATE);
+    public void setUp() throws ParseException {
+    	Date date = new SimpleDateFormat("dd-MM-yyyy").parse("07-07-199");
+        user = new User(1L, "Ivan", "Ivanov", date);
+        calendar = Calendar.getInstance();
     }
-
-
+    
     @Test
     public void testGetFullName() {
-        User user = new User(ID, FIRST_NAME, LAST_NAME, null);
-        assertEquals("Ivan, Ivanov", user.getFullName());
+    	assertEquals("Ivanov, Ivan", user.getFullName());
     }
-
-
-    //Когда день рождения был ранее в этом году
+    
+    //today
     @Test
-    public void testAgeAfter() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(YEAR_OF_BIRTH, Calendar.SEPTEMBER, 15);
-        User user = new User(ID, FIRST_NAME, LAST_NAME, calendar.getTime());
-        assertEquals(28, user.getAge());
+    public void test_getAge_1() {
+        calendar.set(1999, calendar.get(Calendar.NOVEMBER), 30);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 19;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
     }
-
-    //Когда день рождения будет позже в этом году
+    
+    //tomorrow
     @Test
-    public void testAgeBefore() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(YEAR_OF_BIRTH, Calendar.NOVEMBER, 15);
-        User user = new User(ID, FIRST_NAME, LAST_NAME, calendar.getTime());
-        assertEquals(27, user.getAge());
+    public void test_getAge_2() {
+    	calendar.set(1999, calendar.get(Calendar.DECEMBER), 1);
+		birthday = calendar.getTime();
+	    user.setBirthday(birthday);
+		int result = 18;	
+	    int actual = user.getAge();
+	    assertEquals(result, actual);
     }
-
-       //Когда день рождения сегодня
+  //yesterday
     @Test
-    public void testAgeTheSameDay() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(YEAR_OF_BIRTH, Calendar.OCTOBER, today);
-        User user = new User(ID, FIRST_NAME, LAST_NAME, calendar.getTime());
-        assertEquals(28, user.getAge());
+    public void test_getAge_3() {
+    	calendar.set(1999, calendar.get(Calendar.NOVEMBER), 29);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 19;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
+    }
+    //before current month
+    @Test
+    public void test_getAge_4() {
+    	calendar.set(1999, calendar.get(Calendar.AUGUST), 30);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 19;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
+    }
+    //after current month
+    @Test
+    public void test_getAge_5() {
+    	calendar.set(1999, calendar.get(Calendar.DECEMBER), 30);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 18;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
+    }
+    //1 year<
+    @Test
+    public void test_getAge_6() {
+    	calendar.set(1998, calendar.get(Calendar.DECEMBER), 30);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 19;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
+    }
+    //1year>
+    @Test
+    public void test_getAge_7() {
+    	calendar.set(2001, calendar.get(Calendar.DECEMBER), 30);
+        birthday = calendar.getTime();
+        user.setBirthday(birthday);
+        int result = 16;	
+        int actual = user.getAge();
+        assertEquals(result, actual);
     }
 }

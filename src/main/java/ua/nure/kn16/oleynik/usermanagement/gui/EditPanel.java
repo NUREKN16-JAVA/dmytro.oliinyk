@@ -28,7 +28,7 @@ public class EditPanel extends AddPanel {
             DateFormat format = DateFormat.getDateInstance();
             try {
                 Date date = format.parse(getDateOfBirthField().getText());
-                user.setBirthDate(date);
+                user.setBirthday(date);
             } catch (ParseException e1) {
                 getDateOfBirthField().setBackground(Color.RED);
                 throw e1;
@@ -47,6 +47,6 @@ public class EditPanel extends AddPanel {
         this.user = user;
         getFirstNameField().setText(user.getFirstName());
         getLastNameField().setText(user.getLastName());
-        getDateOfBirthField().setText(format.format(user.getBirthDate()));
+        getDateOfBirthField().setText(format.format(user.getBirthday()));
     }
 }

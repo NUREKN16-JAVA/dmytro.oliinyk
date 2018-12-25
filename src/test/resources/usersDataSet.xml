@@ -6,15 +6,15 @@
 		<column>dateofbirth</column>
 		<row>
 			<value>1000</value>
-			<value>Bill</value>
-			<value>Gates</value>
-			<value>1968-04-26</value>
+			<value>John</value>
+			<value>Doe</value>
+			<value>1999-07-07</value>
 		</row>
 		<row>
 			<value>1001</value>
-			<value>George</value>
-			<value>Bush</value>
-			<value>1949-08-17</value>
+			<value>Masha</value>
+			<value>Kotenko</value>
+			<value>1999-08-18</value>
 		</row>	
 	</table>
 </dataset>
