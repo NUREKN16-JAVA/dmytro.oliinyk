@@ -1,5 +1,7 @@
 package ua.nure.kn16.oleynik.usermanagement.web;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -8,7 +10,7 @@ import ua.nure.kn16.oleynik.usermanagement.web.AddServlet;
 
 public class AddServletTest extends MockServletTestCase {
 	@Override
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		super.setUp();
 		createServlet(AddServlet.class);
 	}

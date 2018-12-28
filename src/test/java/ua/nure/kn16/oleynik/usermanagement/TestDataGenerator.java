@@ -43,9 +43,9 @@ public class TestDataGenerator {
 	private static final String JDBC_USERNAME = "users";
 	private static final String JDBC_PASSWORD = "Dima99";
 
-	private static final String PHOTO_PATH = "C:\\Dmitriy Oleynik\\Java Juniour\\Programs\\projects\\labs\\external\\test-data\\photos";
-	private static final String CERTIFICATES_PATH = "C:\\Dmitriy Oleynik\\Java Juniour\\Programs\\projects\\labs\\external\\test-data\\sertificates";
-	private static final String MEDIA_DIR = "C:\\Dmitriy Oleynik\\Java Juniour\\Programs\\projects\\labs\\src\\main\\java\\webapp\\media";
+	private static final String PHOTO_PATH = "C:\\Dimtriy\\Java Juniour\\Programs\\projects\\labs\\external\\test-data\\photos";
+	private static final String CERTIFICATES_PATH = "C:\\Dimtriy\\Java Juniour\\Programs\\projects\\labs\\external\\test-data\\sertificates";
+	private static final String MEDIA_DIR = "C:\\Dimtriy\\Java Juniour\\Programs\\projects\\labs\\src\\main\\java\\webapp\\media";
 	private static final String COUTRY = "Ukraine";
 	private static final String[] CITIES = { "Kharkiv", "Kiyv", "Odessa" };
 	private static final String PASSWORD_HASH = "$2a$10$q7732w6Rj3kZGhfDYSIXI.wFp.uwTSi2inB2rYHvm1iDIAf1J1eVq";

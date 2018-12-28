@@ -1,4 +1,9 @@
 package ua.nure.kn16.oleynik.usermanagement.web;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -11,7 +16,7 @@ import ua.nure.kn16.oleynik.usermanagement.web.BrowseServlet;
 public class BrowseServletTest extends MockServletTestCase{
 	
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
         super.setUp();
         createServlet(BrowseServlet.class);
     }

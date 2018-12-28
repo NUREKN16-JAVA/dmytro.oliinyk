@@ -2,7 +2,6 @@ package ua.nure.kn16.oleynik.usermanagement.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -100,8 +99,7 @@ public class AddPanel extends JPanel implements ActionListener {
 
 	private JButton getCancelButton() {
 		if(cancelButton == null) {
-			cancelButton = new JButton();
-			//cancelButton.setText(Messages.getString("AddPanel.cancel")); 
+			cancelButton = new JButton(); 
 			cancelButton.setText(Messages.getString("AddPanel.cancel")); 
 			cancelButton.setName("cancelButton"); //$NON-NLS-1$
 			cancelButton.setActionCommand("cancel"); //$NON-NLS-1$
@@ -113,7 +111,6 @@ public class AddPanel extends JPanel implements ActionListener {
 	private JButton getOkButton() {
 		if(okButton == null) {
 			okButton = new JButton();
-			//okButton.setText(Messages.getString("AddPanel.ok")); 
 			okButton.setText(Messages.getString("AddPanel.Ok")); 
 			okButton.setName("okButton"); 
 			okButton.setActionCommand("ok"); 

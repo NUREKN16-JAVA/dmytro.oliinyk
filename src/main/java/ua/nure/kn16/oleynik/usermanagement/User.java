@@ -30,7 +30,7 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	//Gettes and Setters for Id, FirstName, LastName and Birthday
+	
     public Long getId() {
         return id;
     }

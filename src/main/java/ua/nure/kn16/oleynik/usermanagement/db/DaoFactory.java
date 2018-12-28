@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public abstract class DaoFactory {
 	
-	protected static final String USER_DAO = "pakhomov.labs.db.UserDao";
+	protected static final String USER_DAO = "ua.nure.kn16.oleynik.usermanagement.db.UserDao";
 	final static String DAO_FACTORY = "dao.factory";
 	protected static Properties properties;
 	

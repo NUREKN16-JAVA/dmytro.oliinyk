@@ -26,7 +26,7 @@ public class ConnectionFactoryImpl implements ConnectionFactory {
 		driver = properties.getProperty("connection.driver");
 	}
 
-	
+	@Override
 	public Connection createConnection() throws DatabaseException {
 		try {
 			Class.forName(driver);

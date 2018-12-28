@@ -5,12 +5,14 @@ import java.util.Date;
 import ua.nure.kn16.oleynik.usermanagement.User;
 import ua.nure.kn16.oleynik.usermanagement.web.EditServlet;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.text.DateFormat;
 
 public class EditServletTest extends MockServletTestCase {
 
 	@Override
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		super.setUp();
 		createServlet(EditServlet.class);
 	}

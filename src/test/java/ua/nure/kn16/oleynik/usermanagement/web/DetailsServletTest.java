@@ -1,11 +1,13 @@
 package ua.nure.kn16.oleynik.usermanagement.web;
 
+import static org.junit.Assert.assertNull;
+
 import ua.nure.kn16.oleynik.usermanagement.User;
 import ua.nure.kn16.oleynik.usermanagement.web.DetailsServlet;
 
 public class DetailsServletTest extends MockServletTestCase {
 	@Override
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		super.setUp();
 		createServlet(DetailsServlet.class);
 	}
